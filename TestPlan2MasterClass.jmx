@@ -5,11 +5,13 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="_____CONFIG_____" enabled="false"/>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="sandbox" elementType="Argument">
             <stringProp name="Argument.name">sandbox</stringProp>
@@ -20,13 +22,13 @@
         <stringProp name="TestPlan.comments">Не уверен, что так было правильно) </stringProp>
       </Arguments>
       <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="ConnectionData">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="ConnectionData" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="HOST" elementType="Argument">
             <stringProp name="Argument.name">HOST</stringProp>
@@ -52,7 +54,7 @@
         <stringProp name="TestPlan.comments">Данные для подключения к HelpDesk</stringProp>
       </Arguments>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <stringProp name="HTTPSampler.domain">${HOST}</stringProp>
         <stringProp name="HTTPSampler.port">${PORT}</stringProp>
         <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
@@ -72,7 +74,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">5</stringProp>
+          <stringProp name="LoopController.loops">4</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -81,7 +83,7 @@
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
             <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="-147596763">TF_UserCreationShort</stringProp>
+            <stringProp name="-979534226">TF_GenerateTicket</stringProp>
           </collectionProp>
           <stringProp name="TestPlan.comments">Запуск сценария</stringProp>
         </ModuleController>
@@ -89,26 +91,23 @@
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="_____СЦЕНАРИЙ_____" enabled="false"/>
       <hashTree/>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_AdminLogin"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_AdminLogin" enabled="true"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_AdminLogin">
           <stringProp name="TestPlan.comments">Сценарий запуска под админом</stringProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="AdminData">
-            <collectionProp name="UserParameters.names">
-              <stringProp name="-265713450">username</stringProp>
-              <stringProp name="3433489">pass</stringProp>
-            </collectionProp>
-            <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-1861458139">
-                <stringProp name="92668751">admin</stringProp>
-                <stringProp name="-969110938">admindev</stringProp>
-              </collectionProp>
-            </collectionProp>
-            <boolProp name="UserParameters.per_iteration">false</boolProp>
-          </UserParameters>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="admindata &lt;&lt;&lt; JSR223 Sampler">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">FileWriter fWriter = new FileWriter(&quot;C:/stage/TestPlan2/users.csv&quot;, true);
+String line = &quot;admin;admindev\n&quot;;
+fWriter.write(line);
+fWriter.close();</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Sampler>
           <hashTree/>
           <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_Login">
             <collectionProp name="ModuleController.node_path">
@@ -155,7 +154,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -203,7 +202,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -233,13 +232,13 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/add/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/add/" enabled="true">
             <stringProp name="TestPlan.comments">Переход во вкладку добавления пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/add/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -251,7 +250,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -281,7 +280,7 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
@@ -336,7 +335,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -377,7 +376,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="user_id &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="user_id &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">user_id</stringProp>
               <stringProp name="RegexExtractor.regex">/user/(.*)/change/\&quot;</stringProp>
@@ -387,7 +386,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">username</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;username\&quot; value=\&quot;(.*)\&quot; class</stringProp>
@@ -397,7 +396,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -408,7 +407,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">Переход во вкладку изсменения пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -420,7 +419,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -453,7 +452,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -464,13 +463,13 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">POST-запрос на изменение данных пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -574,7 +573,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -615,7 +614,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -626,13 +625,13 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">Переход во вкладку изсменения пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -644,7 +643,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -673,7 +672,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="f_name &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="f_name &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">f_name</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;first_name\&quot; value=\&quot;(.*)\&quot; c</stringProp>
@@ -683,7 +682,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="l_name &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="l_name &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">l_name</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;last_name\&quot; value=\&quot;(.*)\&quot; c</stringProp>
@@ -693,7 +692,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="email &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="email &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">email</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;email\&quot; value=\&quot;(.*)\&quot; c</stringProp>
@@ -704,12 +703,12 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">POST-запрос на изменение данных пользователя (добавился staff- статус)</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -820,7 +819,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -872,7 +871,7 @@ fWriter.close();</stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -885,13 +884,13 @@ fWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_GenerateTicket"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_GenerateTicket" enabled="true"/>
       <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_GenerateTicket">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_GenerateTicket" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_UserCreation">
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_UserCreation" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="764597751">Test Plan</stringProp>
@@ -900,13 +899,13 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Создание пользователя</stringProp>
           </ModuleController>
           <hashTree/>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /" enabled="true">
             <stringProp name="TestPlan.comments">Переход на главную страницу</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -917,7 +916,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -947,13 +946,13 @@ fWriter.close();</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/" enabled="true">
             <stringProp name="TestPlan.comments">Открытие страницы с задачами</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -965,7 +964,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -998,7 +997,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -1008,7 +1007,7 @@ fWriter.close();</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="query_encoded &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="query_encoded &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">query_encoded</stringProp>
               <stringProp name="RegexExtractor.regex">&apos;query_encoded&apos; value=&apos;(.*)&apos;/&gt;</stringProp>
@@ -1019,7 +1018,7 @@ fWriter.close();</stringProp>
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__" enabled="true">
             <stringProp name="TestPlan.comments">Загрузка задач с БД</stringProp>
             <stringProp name="HTTPSampler.path">/datatables_ticket_list/${query_encoded}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1504,7 +1503,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -1534,7 +1533,7 @@ fWriter.close();</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /logout/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /logout/" enabled="true">
             <stringProp name="TestPlan.comments">Выход со страницы пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/logout/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1546,7 +1545,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -1576,7 +1575,7 @@ fWriter.close();</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_Login">
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_Login" enabled="true">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="764597751">Test Plan</stringProp>
@@ -1585,13 +1584,13 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Вход под данными последнего созданного пользователя</stringProp>
           </ModuleController>
           <hashTree/>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/submit/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/submit/" enabled="true">
             <stringProp name="TestPlan.comments">Переход на страницу создание тикета</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/submit/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1603,7 +1602,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -1633,13 +1632,13 @@ fWriter.close();</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /tickets/submit/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /tickets/submit/" enabled="true">
             <stringProp name="TestPlan.comments">Заполнение тикета данными и его POST-запрос на создание</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/submit/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1718,7 +1717,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -1755,7 +1754,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ticket_number &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ticket_number &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">ticket_number</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;h3&gt;..-(.*)\. ................................................................</stringProp>
@@ -1766,7 +1765,7 @@ fWriter.close();</stringProp>
               <stringProp name="TestPlan.comments">Огромный костыль)))))))))) Не придумал как по другому)</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="345701180">Unless otherwise stated, all fields are required.</stringProp>
               </collectionProp>
@@ -1777,7 +1776,7 @@ fWriter.close();</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/__ticket_number__/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/__ticket_number__/" enabled="true">
             <stringProp name="TestPlan.comments">Переход на страницу тикета</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/${ticket_number}/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1789,7 +1788,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -1864,13 +1863,27 @@ fWriter.close();</stringProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="username, pass &gt;&gt;&gt; JSR223 PreProcessor">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">def filePath = &apos;C:/stage/TestPlan2/users.csv&apos; //путь к файлу
+def lines = new File(filePath).readLines() // файл открывается для чтения
+def lastLine = lines[-1] // считывается последняя строка
+def (username, pass) = lastLine.split(&apos;;&apos;) // строка парсится по символу &quot;;&quot;
+vars.put(&quot;username&quot;, username) // сохрнение username в vars
+vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
         </hashTree>
-        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
           <stringProp name="ConstantTimer.delay">100.0</stringProp>
           <stringProp name="RandomTimer.range">400.0</stringProp>
         </UniformRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/" enabled="true">
           <stringProp name="TestPlan.comments">Открытие страницы с авторизацией</stringProp>
           <stringProp name="HTTPSampler.path">/login/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1890,7 +1903,7 @@ fWriter.close();</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Referer" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -1919,7 +1932,7 @@ fWriter.close();</stringProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">csrf</stringProp>
             <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -1930,12 +1943,12 @@ fWriter.close();</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
+        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
           <stringProp name="ConstantTimer.delay">100.0</stringProp>
           <stringProp name="RandomTimer.range">400.0</stringProp>
         </UniformRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/" enabled="true">
           <stringProp name="TestPlan.comments">Авторизация</stringProp>
           <stringProp name="HTTPSampler.path">/login/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1976,7 +1989,7 @@ fWriter.close();</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Referer" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -2017,7 +2030,7 @@ fWriter.close();</stringProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="565935959">Your username and password didn&apos;t match. Please try again.</stringProp>
             </collectionProp>
@@ -2028,7 +2041,7 @@ fWriter.close();</stringProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/" enabled="true">
           <stringProp name="TestPlan.comments">Открытие страницы с задачами</stringProp>
           <stringProp name="HTTPSampler.path">/tickets/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2040,7 +2053,7 @@ fWriter.close();</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Referer" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -2073,7 +2086,7 @@ fWriter.close();</stringProp>
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">csrf</stringProp>
             <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -2083,7 +2096,7 @@ fWriter.close();</stringProp>
             <stringProp name="RegexExtractor.match_number">1</stringProp>
           </RegexExtractor>
           <hashTree/>
-          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="query_encoded &gt;&gt;&gt; Regular Expression Extractor">
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="query_encoded &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">query_encoded</stringProp>
             <stringProp name="RegexExtractor.regex">&apos;query_encoded&apos; value=&apos;(.*)&apos;/&gt;</stringProp>
@@ -2094,7 +2107,7 @@ fWriter.close();</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__" enabled="true">
           <stringProp name="TestPlan.comments">Загрузка задач с БД</stringProp>
           <stringProp name="HTTPSampler.path">/datatables_ticket_list/${query_encoded}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2579,7 +2592,7 @@ fWriter.close();</stringProp>
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="Referer" elementType="Header">
                 <stringProp name="Header.name">Referer</stringProp>
@@ -2610,14 +2623,14 @@ fWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_UserCreationShort"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_UserCreationShort" enabled="true"/>
       <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_UserCreationShort">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_UserCreationShort" enabled="true">
           <stringProp name="TestPlan.comments">Генерация пользователя с минимальным колиеством запросов(не уверен, что здесь нужны паузы, но я их поставил и выключил)</stringProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="AdminData">
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="AdminData" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="username" elementType="Argument">
                 <stringProp name="Argument.name">username</stringProp>
@@ -2633,7 +2646,7 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Данные для входа под админом</stringProp>
           </Arguments>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/" enabled="true">
             <stringProp name="TestPlan.comments">Открытие страницы с авторизацией</stringProp>
             <stringProp name="HTTPSampler.path">/login/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2653,7 +2666,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -2682,7 +2695,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -2712,7 +2725,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/" enabled="true">
             <stringProp name="TestPlan.comments">Авторизация</stringProp>
             <stringProp name="HTTPSampler.path">/login/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2753,7 +2766,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -2794,7 +2807,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="565935959">Your username and password didn&apos;t match. Please try again.</stringProp>
               </collectionProp>
@@ -2805,7 +2818,7 @@ fWriter.close();</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/" enabled="true">
             <stringProp name="TestPlan.comments">Открытие страницы с задачами</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2817,7 +2830,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -2850,7 +2863,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -2866,7 +2879,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/" enabled="true">
             <stringProp name="TestPlan.comments">POST- запрос на создание пользователя</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/add/</stringProp>
@@ -2915,7 +2928,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -2956,7 +2969,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="user_id &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="user_id &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">user_id</stringProp>
               <stringProp name="RegexExtractor.regex">/user/(.*)/change/\&quot;</stringProp>
@@ -2966,7 +2979,7 @@ fWriter.close();</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">username</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;username\&quot; value=\&quot;(.*)\&quot; class</stringProp>
@@ -2976,7 +2989,7 @@ fWriter.close();</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -2987,7 +3000,7 @@ fWriter.close();</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">Переход во вкладку изсменения пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2999,7 +3012,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -3032,7 +3045,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="csrf &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">csrf</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;csrfmiddlewaretoken\&quot; value=\&quot;(.*)\&quot;</stringProp>
@@ -3048,7 +3061,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/" enabled="true">
             <stringProp name="TestPlan.comments">POST-запрос на изменение данных пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -3159,7 +3172,7 @@ fWriter.close();</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -3200,7 +3213,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -3312,7 +3325,7 @@ fWriter.close();</stringProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
