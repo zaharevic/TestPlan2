@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="_____CONFIG_____" enabled="false"/>
@@ -66,7 +68,7 @@
       <hashTree/>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="_____ТЕСТ_____" enabled="false"/>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UC_02">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="UC_02" enabled="true">
         <intProp name="ThreadGroup.num_threads">3</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -77,7 +79,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_ChooseScenario">
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_ChooseScenario" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
             <stringProp name="764597751">Test Plan</stringProp>
@@ -89,7 +91,7 @@
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="_____СЦЕНАРИЙ_____" enabled="false"/>
       <hashTree/>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_AdminLogin"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_AdminLogin" enabled="true"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_AdminLogin">
           <stringProp name="TestPlan.comments">Сценарий запуска под админом</stringProp>
@@ -125,11 +127,11 @@ fWriter.close();</stringProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_AdminLogin" enabled="true">
+          <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="MC_AdminLogin">
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-865300647">TF_AdminLogin_1</stringProp>
+              <stringProp name="1027031399">TF_AdminLogin</stringProp>
             </collectionProp>
             <stringProp name="TestPlan.comments">Вход под админом</stringProp>
           </ModuleController>
@@ -284,7 +286,7 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/" enabled="true">
             <stringProp name="TestPlan.comments">POST- запрос на создание пользователя</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/add/</stringProp>
@@ -384,7 +386,7 @@ fWriter.close();</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="username &gt;&gt;&gt; Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">username</stringProp>
               <stringProp name="RegexExtractor.regex">\&quot;username\&quot; value=\&quot;(.*)\&quot; class</stringProp>
@@ -404,7 +406,7 @@ fWriter.close();</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -566,7 +568,7 @@ fWriter.close();</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -823,7 +825,7 @@ fWriter.close();</stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="768696016">Please correct the error below.</stringProp>
               </collectionProp>
@@ -836,7 +838,7 @@ fWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_GenerateTicket"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_GenerateTicket" enabled="true"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_GenerateTicket">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -846,7 +848,7 @@ fWriter.close();</stringProp>
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-1054031222">TF_UserCreation_2</stringProp>
+              <stringProp name="164266135">TF_UserCreation</stringProp>
               <stringProp name="1680942010">TC_UserCreation</stringProp>
             </collectionProp>
             <stringProp name="TestPlan.comments">Создание пользователя</stringProp>
@@ -856,7 +858,7 @@ fWriter.close();</stringProp>
             <collectionProp name="ModuleController.node_path">
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="764597751">Test Plan</stringProp>
-              <stringProp name="-461267188">TF_GoToMainPageAndLogout + </stringProp>
+              <stringProp name="1684610505">TF_GoToMainPageAndLogout</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -876,7 +878,7 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/submit/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /tickets/submit/" enabled="true">
             <stringProp name="TestPlan.comments">Переход на страницу создание тикета</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/submit/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -924,7 +926,7 @@ fWriter.close();</stringProp>
             <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /tickets/submit/">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /tickets/submit/" enabled="true">
             <stringProp name="TestPlan.comments">Заполнение тикета данными и его POST-запрос на создание</stringProp>
             <stringProp name="HTTPSampler.path">/tickets/submit/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1051,7 +1053,7 @@ fWriter.close();</stringProp>
               <stringProp name="TestPlan.comments">Огромный костыль)))))))))) Не придумал как по другому)</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="345701180">Unless otherwise stated, all fields are required.</stringProp>
               </collectionProp>
@@ -1064,7 +1066,7 @@ fWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_UserCreationShort"/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_UserCreationShort" enabled="true"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_UserCreationShort">
           <stringProp name="TestPlan.comments">Генерация пользователя с минимальным колиеством запросов(не уверен, что здесь нужны паузы, но я их поставил и выключил)</stringProp>
@@ -1152,7 +1154,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/">
             <stringProp name="TestPlan.comments">Авторизация</stringProp>
             <stringProp name="HTTPSampler.path">/login/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1260,7 +1262,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/add/">
             <stringProp name="TestPlan.comments">POST- запрос на создание пользователя</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/add/</stringProp>
@@ -1386,7 +1388,7 @@ fWriter.close();</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /admin/auth/user/__user_id__/change/">
             <stringProp name="TestPlan.comments">POST-запрос на изменение данных пользователя</stringProp>
             <stringProp name="HTTPSampler.path">/admin/auth/user/${user_id}/change/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1553,9 +1555,9 @@ fWriter.close();</stringProp>
       </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_Login" enabled="false"/>
       <hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SC_Login" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SC_Login"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /">
             <stringProp name="TestPlan.comments">Открытие главной страницы</stringProp>
             <stringProp name="HTTPSampler.path">/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1607,12 +1609,12 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
             </JSR223PreProcessor>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /login/">
             <stringProp name="TestPlan.comments">Открытие страницы с авторизацией</stringProp>
             <stringProp name="HTTPSampler.path">/login/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1672,12 +1674,12 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer">
             <stringProp name="ConstantTimer.delay">100.0</stringProp>
             <stringProp name="RandomTimer.range">400.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /login/">
             <stringProp name="TestPlan.comments">Авторизация</stringProp>
             <stringProp name="HTTPSampler.path">/login/</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1804,7 +1806,7 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__">
             <stringProp name="TestPlan.comments">Загрузка задач с БД</stringProp>
             <stringProp name="HTTPSampler.path">/datatables_ticket_list/${query_encoded}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2376,7 +2378,7 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
           <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
         </UniformRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /datatables_ticket_list/__query_encoded__">
           <stringProp name="TestPlan.comments">Загрузка задач с БД</stringProp>
           <stringProp name="HTTPSampler.path">/datatables_ticket_list/${query_encoded}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2897,7 +2899,7 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
           <stringProp name="TestPlan.comments">Пауза от 1 до 5 сек</stringProp>
         </UniformRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /logout/" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /logout/">
           <stringProp name="TestPlan.comments">Выход со страницы пользователя</stringProp>
           <stringProp name="HTTPSampler.path">/logout/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -3001,7 +3003,7 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -3038,7 +3040,7 @@ vars.put(&quot;pass&quot;, pass) // сохрнение pass в vars
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
